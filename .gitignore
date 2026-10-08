@@ -11,6 +11,8 @@ venv/
 
 # Environment/secrets
 .env
+.env.*
+!.env.example 
 
 # Data
 data/documents/*

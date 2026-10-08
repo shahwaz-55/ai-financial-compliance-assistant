@@ -1,5 +1,8 @@
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+from backend.api.documents import router as documents_router
 
 app = FastAPI(
     title="AI Financial Compliance Assistant",
@@ -15,10 +18,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(documents_router)
+
 
 @app.get("/")
 def root():
-    return {"message": "AI Financial Compliance Assistant API is running"}
+    return {
+        "message": "AI Financial Compliance Assistant API is running"
+    }
 
 
 @app.get("/health")
